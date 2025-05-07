@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webchat Review</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+  <h1 class="text-4xl font-bold text-center mb-2 text-gray-800">Webchat review</h1>
+  <p id="docCounter" class="text-center text-lg mb-6 text-gray-600 transition-all duration-300">Document number 0 of 0</p>
+
+  <div class="flex justify-center mb-6">
+    <input type="file" id="fileInput" multiple accept=".txt" onchange="handleFileUpload(event)"
+      class="border p-2 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 bg-white">
+  </div>
+
+  <div id="textDisplay" class="bg-white rounded-2xl shadow-lg p-6 h-64 overflow-y-scroll whitespace-pre-wrap mb-6 scroll-smooth transition-all duration-300"></div>
+
+  <!-- Question area -->
+  <div id="questionContainer" class="flex flex-col space-y-4 items-center mb-6 transition-opacity duration-300">
+    <p id="questionText" class="text-xl font-semibold text-gray-700 text-center"></p>
+    <div class="flex space-x-4">
+      <button onclick="answerYes()" id="yesButton"
+        class="px-6 py-3 bg-gradient-to-r from-green-400 to-green-600 text-white rounded-xl hover:scale-105 transition-transform duration-150 active:scale-95 shadow-md">
+        Yes
+      </button>
+      <button onclick="answerNo()" id="noButton"
+        class="px-6 py-3 bg-gradient-to-r from-red-400 to-red-600 text-white rounded-xl hover:scale-105 transition-transform duration-150 active:scale-95 shadow-md">
+        No
+      </button>
+    </div>
+  </div>
+
+  <!-- Done message -->
+  <p id="doneMessage" class="text-center text-green-600 font-semibold hidden mb-6 text-lg">✅ All questions answered for this file.</p>
+
+  <!-- Navigation buttons -->
+  <div class="flex justify-between space-x-4 mb-6">
+    <button onclick="previousFile()" id="prevButton"
+      class="flex-1 px-6 py-3 bg-gray-400 text-white rounded-xl hover:scale-105 transition-transform duration-150 active:scale-95 shadow disabled:opacity-50 disabled:cursor-not-allowed">
+      Previous
+    </button>
+    <button onclick="nextFile()" id="nextButton"
+      class="flex-1 px-6 py-3 bg-blue-500 text-white rounded-xl hover:scale-105 transition-transform duration-150 active:scale-95 shadow disabled:opacity-50 disabled:cursor-not-allowed">
+      Next
+    </button>
+  </div>
+
+  <!-- Download button -->
+  <div class="flex justify-center">
+    <button onclick="downloadResults()" id="downloadButton"
+      class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white rounded-xl hover:scale-105 transition-transform duration-150 active:scale-95 shadow-md">
+      Download Results (JSON)
+    </button>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+    Answer recorded!
+  </div>
+
+</body>
+</html>

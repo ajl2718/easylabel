@@ -11,3 +11,5 @@ To run the application simply load the `index.html` file in a browser. You can t
 - Clean up the interface
 - Allow for labelling with more than two categories.
 - Make the interface nicer
+- Increase the number of labelling tasks, e.g., NER.
+- Visualise and modify prompts for LLMs
